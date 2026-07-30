@@ -1,0 +1,590 @@
+/* =====================================================
+   RESET & ESTILOS BASE
+===================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Manrope", sans-serif;
+    background: #ffffff;
+    color: #101828;
+    overflow-x: hidden;
+}
+
+/* =====================================================
+   NAVBAR CON EFECTO CRISTAL 3D TRANSPARENTE
+===================================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    z-index: 1000;
+    padding: 0;
+    display: flex;
+    align-items: center;
+
+    /* Fondo ultra transparente */
+    background: rgba(255, 255, 255, 0.2) !important;
+    
+    /* Desenfoque de vidrio profundo */
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    
+    /* Borde fino traslúcido para dar el efecto de grosor de cristal */
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.6);
+
+    /* Sombras 3D: Reflejo de luz interior + sombra flotante suave */
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.05),
+        inset 0 1px 2px rgba(255, 255, 255, 0.8);
+        
+    transition: all 0.3s ease;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #101828;
+    text-decoration: none;
+}
+
+.logo:hover {
+    color: #6C63FF;
+}
+
+.nav-link {
+    margin-left: 30px;
+    color: #101828;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.nav-link:hover {
+    color: #6C63FF;
+}
+
+/* =====================================================
+   HERO & EFECTO AURORA (ANIMACIÓN)
+===================================================== */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Contenedor del fondo Aurora */
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Estilo Base de las esferas (Blobs) */
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.65;
+    will-change: transform;
+}
+
+/* Esfera 1 */
+.blob1 {
+    width: 550px;
+    height: 550px;
+    background: #6C63FF;
+    top: -180px;
+    left: -180px;
+    animation: auroraFloat1 5s ease-in-out infinite alternate;
+}
+
+/* Esfera 2 */
+.blob2 {
+    width: 500px;
+    height: 500px;
+    background: #FF4FD8;
+    right: -180px;
+    top: 120px;
+    animation: auroraFloat2 7s ease-in-out infinite alternate;
+}
+
+/* Esfera 3 */
+.blob3 {
+    width: 450px;
+    height: 450px;
+    background: #3B82F6;
+    bottom: -180px;
+    left: 35%;
+    animation: auroraFloat3 6s ease-in-out infinite alternate;
+}
+
+/* ANIMACIONES KEYFRAMES CON MOVIMIENTOS EVIDENTES */
+@keyframes auroraFloat1 {
+    0% {
+        transform: translate(0px, 0px) scale(1);
+    }
+    50% {
+        transform: translate(150px, 80px) scale(1.2);
+    }
+    100% {
+        transform: translate(-50px, 140px) scale(0.85);
+    }
+}
+
+@keyframes auroraFloat2 {
+    0% {
+        transform: translate(0px, 0px) scale(1);
+    }
+    50% {
+        transform: translate(-140px, -100px) scale(1.25);
+    }
+    100% {
+        transform: translate(80px, -40px) scale(0.9);
+    }
+}
+
+@keyframes auroraFloat3 {
+    0% {
+        transform: translate(0px, 0px) scale(1);
+    }
+    50% {
+        transform: translate(100px, -120px) scale(1.15);
+    }
+    100% {
+        transform: translate(-120px, 60px) scale(0.95);
+    }
+}
+
+/* Contenido por encima de las luces */
+.hero .container {
+    position: relative;
+    z-index: 10;
+}
+
+/* Badge Hero (Efecto Cristal 3D) */
+.badgeHero {
+    display: inline-block;
+    padding: 10px 24px;
+    
+    /* Fondo traslúcido y desenfoque */
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    
+    /* Borde brillante simula reflejo de cristal */
+    border: 1.5px solid rgba(255, 255, 255, 0.85);
+    border-radius: 999px;
+    
+    /* Sombras 3D suave */
+    box-shadow: 
+        0 10px 25px rgba(0, 0, 0, 0.04),
+        inset 0 1px 2px rgba(255, 255, 255, 0.9);
+        
+    color: #6C63FF;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.badgeHero:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 
+        0 12px 30px rgba(108, 99, 255, 0.12),
+        inset 0 1px 3px rgba(255, 255, 255, 1);
+}
+
+/* Título e Textos Hero */
+.hero h1 {
+    font-size: 4.2rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    color: #6C63FF;
+}
+
+.hero p {
+    font-size: 1.15rem;
+    color: #667085;
+    max-width: 550px;
+    margin-bottom: 40px;
+}
+
+.heroButtons {
+    display: flex;
+    gap: 20px;
+}
+
+.btn-primary {
+    background: #6C63FF;
+    border: none;
+    padding: 14px 34px;
+    border-radius: 50px;
+    transition: .3s;
+}
+
+.btn-primary:hover {
+    background: #584ef7;
+    transform: translateY(-3px);
+}
+
+.btn-outline-dark {
+    border-radius: 50px;
+    padding: 14px 34px;
+    transition: .3s;
+}
+
+.btn-outline-dark:hover {
+    transform: translateY(-3px);
+}
+
+/* =====================================================
+   TARJETAS HERO (COMPOSICIÓN LIMPIA Y GLASS 3D)
+===================================================== */
+
+/* Contenedor principal alineado */
+.heroCards {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 480px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo Base Cristal 3D Traslúcido */
+.glassCard {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1.5px solid rgba(255, 255, 255, 0.85);
+    border-radius: 22px;
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.05),
+        inset 0 1px 2px rgba(255, 255, 255, 0.9);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glassCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 20px 40px rgba(108, 99, 255, 0.15),
+        inset 0 1px 3px rgba(255, 255, 255, 1);
+}
+
+/* 1. Tarjeta Principal (Centro Perfecto) */
+.cardMain {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    padding: 35px 30px;
+    z-index: 2;
+    text-align: left;
+}
+
+.cardMain h5 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: #101828;
+}
+
+.cardMain p {
+    margin: 0;
+    color: #475467;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* 2. Botones de Servicios (Flotando Armónicamente alrededor) */
+.smallCard {
+    position: absolute;
+    height: 56px;
+    padding: 0 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #101828;
+    white-space: nowrap;
+    z-index: 3;
+}
+
+.smallCard i {
+    font-size: 1.25rem;
+    color: #6C63FF;
+}
+
+/* POSICIONES EXACTAS SIN TAPAR TEXTOS */
+
+/* 'Desarrollo Web' -> Esquina superior derecha del marco */
+.card1 {
+    top: 25px;
+    right: 0px;
+}
+
+/* 'Branding' -> Esquina inferior izquierda (Sin tapar el texto) */
+.card2 {
+    bottom: 30px;
+    left: -20px;
+}
+
+/* 'Marketing Digital' -> Esquina inferior derecha */
+.card3 {
+    bottom: 25px;
+    right: -10px;
+}
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media(max-width: 991px) {
+    .navbar {
+        background: white;
+        position: fixed;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, .05);
+    }
+
+    .hero {
+        padding-top: 130px;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .heroButtons {
+        justify-content: center;
+    }
+
+    .heroCards {
+        display: none;
+    }
+}
+
+/* ===========================
+        SERVICIOS STYLES
+=========================== */
+.service-card {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(108, 99, 255, 0.12);
+    border-color: rgba(108, 99, 255, 0.3);
+}
+
+.icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, rgba(108, 99, 255, 0.1), rgba(255, 79, 216, 0.1));
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    color: #6C63FF;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover .icon-wrapper {
+    background: linear-gradient(135deg, #6C63FF, #FF4FD8);
+    color: #ffffff;
+}
+
+.service-link {
+    color: #6C63FF;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.service-link:hover {
+    gap: 12px;
+    color: #3B82F6;
+}
+
+/* ===========================
+        PROYECTOS STYLES
+=========================== */
+.bg-light-section {
+    background-color: rgba(248, 250, 252, 0.5);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.project-card {
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease-in-out;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(108, 99, 255, 0.15);
+}
+
+.project-img-wrapper {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+}
+
+.project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-img {
+    transform: scale(1.08);
+}
+
+.project-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(16, 24, 40, 0.75);
+    backdrop-filter: blur(8px);
+    color: #ffffff;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* ===========================
+        CONTACTO STYLES
+=========================== */
+.contact-card {
+    background: #ffffff;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+}
+
+.custom-input {
+    border-radius: 12px;
+    padding: 12px 16px;
+    border: 1px solid #E4E7EC;
+    background-color: #F9FAFB;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.custom-input:focus {
+    background-color: #ffffff;
+    border-color: #6C63FF;
+    box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.15);
+}
+
+/* ===========================
+   AURORA PÁGINAS SECUNDARIAS
+=========================== */
+.page-header-aurora {
+    position: relative;
+    overflow: hidden;
+    padding: 120px 0 60px 0;
+    min-height: 300px;
+}
+
+.page-header-aurora .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.page-header-aurora .container {
+    position: relative;
+    z-index: 2;
+}
+/*.logo-img {
+    height: 240px; /* O el tamaño que mejor sientas visualmente */
+    /*width: auto;
+    display: block;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover .logo-img {
+    transform: translateY(-2px);
+}*/
+/* =====================================================
+   ALINEACIÓN PERFECTA Y TAMAÑO LIBRE DEL LOGO
+===================================================== */
+
+.navbar .container {
+    display: flex;
+    align-items: center !important;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.navbar-brand.logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin-right: 0;
+    padding: 0;
+}
+
+/* AQUÍ CAMBIAS EL TAMAÑO DE LA IMAGEN LIBREMENTE */
+.logo-img {
+    height: 320px; /* Modifica este número a tu gusto */
+    width: auto;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover .logo-img {
+    transform: translateY(-2px);
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 0;
+}
